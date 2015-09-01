@@ -9,7 +9,7 @@
 
 #### 效果图
     图片经过压缩，会很模糊，具体效果请下载DEMO自行观看
-      ![](https://github.com/yimouleng/LLPictureShow/blob/master/123.gif)
+      ![效果图](https://raw.githubusercontent.com/yimouleng/LLPictureShow/master/123.gif)
       
 #### 使用方法
 
