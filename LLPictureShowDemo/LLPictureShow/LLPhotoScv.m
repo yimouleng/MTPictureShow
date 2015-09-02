@@ -16,9 +16,7 @@
 
 @end
 
-#define  SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
-#define  SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
-
+#define kWhith 64      //预留高度
 @implementation LLPhotoScv
 
 - (id)initWithFrame:(CGRect)frame andImage:(NSArray *)imageArr
@@ -33,8 +31,10 @@
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.scrollsToTop = NO;
         self.scrollView.delegate = self;
-        
-        [self.scrollView setContentOffset:CGPointMake(self.frame.size.width, 0)];
+        /*
+         //默认偏移量，需要时设置
+        [self.scrollView setContentOffset:CGPointMake(0, 0)];
+         */
         
         [self addSubview:self.scrollView];
 
@@ -45,7 +45,7 @@
         NSUInteger imgCount = [_imageArray count];
         
         /******设置scrollView的contentSize******/
-         self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH *self.imageArray.count, 0);
+         self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width *self.imageArray.count, 0);
         
         
         for (int i=0; i<imgCount; i++) {
@@ -54,18 +54,18 @@
             
             LLPhotoView *s = [[LLPhotoView alloc] initWithFrame:frame];
             s.backgroundColor = [UIColor clearColor];
-            s.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height- 64);
+            s.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height- kWhith);
             s.delegate = self;
-            s.minimumZoomScale = 1.0;
-            s.maximumZoomScale = 3.0;
-            [s setZoomScale:1.0];
+            s.minimumZoomScale = 1.f;
+            s.maximumZoomScale = 3.f;
+            [s setZoomScale:1.f];
             s.userInteractionEnabled = YES;
             s.showsVerticalScrollIndicator = NO;
             s.showsHorizontalScrollIndicator = NO;
             
             NSString *imgName = self.imageArray[i];
             
-            s =  [s initWithFrame:frame andImage:imgName];
+            s  =  [s initWithFrame:frame andImage:imgName];
             [_scrollView addSubview:s];
         }
     }
@@ -87,7 +87,7 @@
             offset = x;
             for (UIScrollView *s in scrollView.subviews){
                 if ([s isKindOfClass:[UIScrollView class]]){
-                    [s setZoomScale:1.0];
+                    [s setZoomScale:1.f];
                 }
             }
         }
