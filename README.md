@@ -15,7 +15,7 @@
 
     1.单独使用浏览页面   
        直接添加头文件 LLPhotoView.h     
-            调用-(id)initWithFrame:(CGRect)frame andImage:(NSArray *)imageArr;方法创建
+            调用-  (id)initWithFrame:(CGRect)frame andImage:(NSString *)imageStr;方法创建
     2.使用滚动试图浏览
         添加头文件 LLPhotoScv.h
             调用 - (id)initWithFrame:(CGRect)frame andImage:(NSArray *)imageArr; 方法创建
